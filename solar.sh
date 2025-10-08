@@ -1,8 +1,8 @@
 #!/bin/bash
 
-wget -O ~/Documents/kpfl_L59E.txt https://xras.ru/txt/kpfl_L59E.txt
+wget -O ~/Documents/kpfl_SIKA.txt https://xras.ru/txt/kpfl_SIKA.txt
 
-cat ~/Documents/kpfl_L59E.txt | \
+cat ~/Documents/kpfl_SIKA.txt | \
 sed '/^#/d;s/ //g;s/\...$//' | \
 awk -F'|' '{print $1,$4}' | \
 grep -e '[56789]$' | \
