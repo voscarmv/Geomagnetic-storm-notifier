@@ -7,5 +7,8 @@ sed '/^#/d;s/ //g;s/\...$//' | \
 awk -F'|' '{print $1,$4}' | \
 grep -e '[56789]$' | \
 while read line ; do
-    XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send "Solar storm on $line"
+    ACTION=$(XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send --action="run=See storms" "Solar storm on $line")
+    if test $ACTION == "run" ; then
+    	gnome-terminal -- bash -c ~/Documents/hourlysolar.sh
+    fi
 done
